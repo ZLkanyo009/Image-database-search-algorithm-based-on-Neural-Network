@@ -24,9 +24,6 @@ test_loader = Data.DataLoader(dataset=test_dataset,batch_size=BATCH_SIZE,shuffle
 class Model(nn.Module):
     def __init__(self,n_extra_layers=0):
         super().__init__()
-        # nn.Conv2d can be Conv2d in
-        #self.conv1 = torch.nn.Conv2d(1,1,1,1, bias = False)
-        #w = torch.ones((1, 1, 1, 1))
         self.conv1 = nn.Conv2d(1, 8, 5, bias=False)
         self.relu1 = nn.ReLU()
         self.avgpool1=nn.AvgPool2d(2)
@@ -49,7 +46,6 @@ loss = nn.CrossEntropyLoss() #损失函数选择，交叉熵函数
 optimizer = optim.SGD(model.parameters(),lr = 0.01)
 num_epochs = 100
 
-#以下四个列表是为了可视化（暂未实现）
 losses = [] 
 acces = []
 eval_losses = []

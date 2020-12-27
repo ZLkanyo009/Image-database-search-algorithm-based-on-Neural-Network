@@ -16,9 +16,6 @@ image_path = "data_new/5.png"
 class Model(nn.Module):
     def __init__(self,n_extra_layers=0):
         super().__init__()
-        # nn.Conv2d can be Conv2d in
-        #self.conv1 = torch.nn.Conv2d(1,1,1,1, bias = False)
-        #w = torch.ones((1, 1, 1, 1))
         self.conv1 = nn.Conv2d(1, 8, 5, bias=False)
         self.relu1 = nn.ReLU()
         self.avgpool1=nn.AvgPool2d(2)
@@ -71,5 +68,4 @@ shutil.rmtree("similar_img")
 os.mkdir("similar_img")
 for file in dir:
     if "_"+str(label) in file:
-        #print(file)
         shutil.move("data_base/" + file, "similar_img/" + file)
